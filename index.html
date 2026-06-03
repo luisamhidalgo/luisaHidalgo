@@ -1,122 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Luisa Hidalgo Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisa Hidalgo | Portfolio</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f8f5f2;
-      color: #333;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    header {
-      text-align: center;
-      padding: 100px 20px;
-      background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
-      url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600') center/cover;
-      color: white;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 60px;
-      margin-bottom: 10px;
-    }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F4F1E6;
+            color: #2F3438;
+            line-height: 1.7;
+        }
 
-    header p {
-      font-size: 20px;
-    }
+        header {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
 
-    section {
-      width: min(90%, 1000px);
-      margin: 80px auto;
-    }
+            background:
+                linear-gradient(
+                    rgba(20,20,20,.40),
+                    rgba(20,20,20,.40)
+                ),
+                url('graduation.jpg');
 
-    h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      color: #8b5e3c;
-      margin-bottom: 20px;
-    }
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
 
-    .project {
-      background: white;
-      padding: 25px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.08);
-      margin-bottom: 25px;
-    }
+        .hero-content {
+            max-width: 700px;
+        }
 
-    .btn {
-      display: inline-block;
-      background: #B65A3A;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 10px;
-      text-decoration: none;
-      margin-top: 10px;
-    }
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 7vw, 5rem);
+            margin-bottom: 15px;
+        }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      background: #fff;
-      margin-top: 60px;
-    }
-  </style>
+        header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 300;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        section {
+            width: min(90%, 1000px);
+            margin: 90px auto;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #4F6470;
+            margin-bottom: 25px;
+        }
+
+        .project {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            border-top: 5px solid #AFC5C0;
+        }
+
+        .project h3 {
+            margin-bottom: 15px;
+            color: #2F3438;
+        }
+
+        .project p {
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #4F6470;
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            transition: 0.3s ease;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            background: #3D4E58;
+            transform: translateY(-2px);
+        }
+
+        .contact-box {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+        }
+
+        .contact-box p {
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            background: #E9E6D9;
+            color: #6A7D77;
+            margin-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+
+            section {
+                margin: 60px auto;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .project,
+            .contact-box {
+                padding: 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 250px;
+                text-align: center;
+                margin-right: 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <h1>Luisa Hidalgo</h1>
-  <p>Web Developer • UI Designer • PHP & MySQL</p>
+    <div class="hero-content">
+        <h1>Luisa Hidalgo</h1>
+
+        <p>
+            Computer Science Graduate | Full-Stack Web Developer
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn">View Projects</a>
+            <a href="#contact" class="btn">Contact Me</a>
+        </div>
+    </div>
 </header>
 
-<section>
-  <h2>About Me</h2>
-
-  <p>
-    Hi! I’m Luisa, a web developer focused on creating modern,
-    user-friendly websites and applications. I enjoy working with
-    PHP, MySQL, HTML, CSS, and JavaScript.
-  </p>
-</section>
-
-<section>
-  <h2>Projects</h2>
-
-  <div class="project">
-    <h3>The Coffee Bean</h3>
+<section id="about">
+    <h2>About Me</h2>
 
     <p>
-      A full coffee ordering system with customer ordering,
-      admin dashboard, PHP backend, and MySQL database integration.
+        I am a Computer Science graduate with experience developing
+        full-stack web applications using PHP, MySQL, HTML, CSS,
+        and JavaScript. I enjoy building intuitive user interfaces,
+        designing efficient database systems, and creating practical
+        solutions that improve user experiences.
     </p>
 
     <p>
-      Technologies: HTML, CSS, JavaScript, PHP, MySQL
+        Through academic and personal projects, I have gained experience
+        in web development, database management, Linux server
+        administration, and software design. I am passionate about
+        learning new technologies and applying them to solve real-world
+        problems.
     </p>
-
-    <a href="#" class="btn">View Project</a>
-  </div>
 </section>
 
-<section>
-  <h2>Contact</h2>
+<section id="projects">
+    <h2>Projects</h2>
 
-  <p>Email: luisa.m.hidalgo.a@gmail.com</p>
+    <div class="project">
+        <h3>The Coffee Bean Ordering System</h3>
 
-  <a href="https://github.com/" class="btn">GitHub</a>
+        <p>
+            Senior capstone project featuring a complete online coffee
+            ordering platform and administrative management system.
+            Customers can browse products, customize orders, and track
+            order status, while administrators can manage products,
+            orders, and customer activity through a secure dashboard.
+        </p>
+
+        <p>
+            <strong>Technologies:</strong>
+            HTML, CSS, JavaScript, PHP, MySQL
+        </p>
+
+        <a href="https://youtu.be/tgWJ9gKD4h4"
+           target="_blank"
+           class="btn">
+            Customer Ordering Demo
+        </a>
+
+        <a href="https://youtu.be/XrXpcLSi9Cg"
+           target="_blank"
+           class="btn">
+            Admin Dashboard Demo
+        </a>
+
+        <a href="https://github.com/"
+           target="_blank"
+           class="btn">
+            Source Code
+        </a>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+
+    <div class="contact-box">
+        <p>
+            <strong>Email:</strong>
+            luisa.m.hidalgo.a@gmail.com
+        </p>
+
+        <a href="https://github.com/"
+           target="_blank"
+           class="btn">
+            GitHub
+        </a>
+
+        <a href="https://www.linkedin.com/"
+           target="_blank"
+           class="btn">
+            LinkedIn
+        </a>
+    </div>
 </section>
 
 <footer>
-  © 2026 Luisa Hidalgo
+    © 2026 Luisa Hidalgo. All Rights Reserved.
 </footer>
 
 </body>
