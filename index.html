@@ -60,37 +60,105 @@
   nav a.link:hover{color:var(--accent);border-bottom-color:var(--accent);}
 
   /* HERO */
-  .hero{
+  /* HERO */
+.hero{
     padding:90px 0 70px;
     text-align:center;
     border-bottom:1px solid var(--rule);
     position:relative;
-  }
-  .hero .eyebrow{
-    font-family:'IBM Plex Mono',monospace;
-    font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);
-  }
-  .hero h1{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(52px,9vw,92px);margin:10px 0 6px;color:var(--chalk);}
-  .hero .role{font-size:clamp(18px,2.6vw,22px);color:var(--chalk-dim);font-family:'Work Sans',sans-serif;font-weight:500;}
-  .hero p.tagline{max-width:600px;margin:22px auto 0;color:var(--chalk-dim);font-size:16px;}
-  .divider-squiggle{width:220px;margin:26px auto 0;opacity:.8;}
-  .hero .cta-row{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn{
-    display:inline-flex;align-items:center;gap:8px;
-    font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:1px;
-    padding:12px 22px;border-radius:2px;text-decoration:none;border:2px solid var(--accent);
-    transition:all .2s ease;
-  }
-  .btn-solid{background:var(--accent);color:var(--bg-deep);font-weight:500;}
-  .btn-solid:hover{background:transparent;color:var(--accent);}
-  .btn-ghost{color:var(--accent);}
-  .btn-ghost:hover{background:var(--accent);color:var(--bg-deep);}
+    overflow:hidden;
+    background:linear-gradient(
+        to bottom,
+        #132437 0%,
+        #173552 60%,
+        #10253b 100%
+    );
+}
 
-  section{padding:80px 0;border-bottom:1px solid var(--rule);}
-  section:last-of-type{border-bottom:none;}
-  .section-head{margin-bottom:40px;}
-  .section-head .num{font-family:'IBM Plex Mono',monospace;color:var(--accent-dim);font-size:13px;letter-spacing:2px;}
-  .section-head h2{font-size:clamp(30px,4.4vw,42px);margin:4px 0 0;color:var(--chalk);}
+.hero .wrap{
+    position:relative;
+    z-index:5;
+}
+
+.hero .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--accent);
+}
+
+.hero h1{
+    font-family:'Caveat',cursive;
+    font-weight:700;
+    font-size:clamp(52px,9vw,92px);
+    margin:10px 0 6px;
+    color:var(--chalk);
+    animation:floatName 5s ease-in-out infinite;
+}
+
+.hero .role{
+    font-size:clamp(18px,2.6vw,22px);
+    color:var(--chalk-dim);
+    font-family:'Work Sans',sans-serif;
+    font-weight:500;
+}
+
+.hero p.tagline{
+    max-width:600px;
+    margin:22px auto 0;
+    color:var(--chalk-dim);
+    font-size:16px;
+}
+
+.divider-squiggle{
+    width:220px;
+    margin:26px auto 0;
+    opacity:.8;
+}
+
+.hero .cta-row{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+  /* OCEAN WAVES */
+.waves{
+    position:absolute;
+    bottom:-120px;
+    left:0;
+    width:100%;
+    height:260px;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:1;
+}
+
+.wave{
+    position:absolute;
+    left:-50%;
+    width:200%;
+    height:220px;
+    border-radius:43%;
+}
+
+.wave1{
+    background:rgba(79,168,232,.22);
+    animation:wave1 18s linear infinite;
+}
+
+.wave2{
+    background:rgba(79,168,232,.14);
+    animation:wave2 26s linear infinite;
+}
+
+.wave3{
+    background:rgba(79,168,232,.08);
+    animation:wave3 34s linear infinite;
+}
 
   /* ABOUT */
   .about-grid{display:grid;grid-template-columns:1fr;gap:28px;}
@@ -192,6 +260,54 @@
     nav ul{gap:14px;}
     .receipt-head{flex-direction:column;}
   }
+
+@keyframes floatName{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+}
+
+@keyframes wave1{
+
+    0%{
+        transform:translateX(0) rotate(0deg);
+    }
+
+    100%{
+        transform:translateX(-25%) rotate(360deg);
+    }
+
+}
+
+@keyframes wave2{
+
+    0%{
+        transform:translateX(-25%) rotate(360deg);
+    }
+
+    100%{
+        transform:translateX(0) rotate(0deg);
+    }
+
+}
+
+@keyframes wave3{
+
+    0%{
+        transform:translateX(0) rotate(0deg);
+    }
+
+    100%{
+        transform:translateX(-15%) rotate(360deg);
+    }
+
+}
 </style>
 </head>
 <body>
@@ -212,6 +328,11 @@
 </nav>
 
 <header class="hero" id="top">
+  <div class="waves">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+    <div class="wave wave3"></div>
+</div>
   <div class="wrap">
     <div class="eyebrow">Web development &amp; software support</div>
     <h1>Luisa Hidalgo</h1>
@@ -270,7 +391,7 @@
       <div class="menu-col">
         <h3>Additional experience</h3>
         <ul>
-          <li>Customer-facing support <span class="dots"></span> <span class="lvl">2+ yrs</span></li>
+          <li>Customer-facing support <span class="dots"></span> <span class="lvl">5+ yrs</span></li>
           <li>Data validation at scale <span class="dots"></span> <span class="lvl">1 yr</span></li>
           <li>Team leadership <span class="dots"></span> <span class="lvl">2 yrs</span></li>
         </ul>
@@ -366,7 +487,7 @@
     <div class="video-grid reveal">
       <div class="video-card">
         <div class="video-frame">
-          <iframe src="https://youtu.be/tgWJ9gKD4h4" title="The Coffee Bean — customer ordering flow" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/tgWJ9gKD4h4" title="The Coffee Bean — customer ordering flow" allowfullscreen></iframe>
         </div>
         <div class="video-caption">
           <h4>Customer ordering flow</h4>
@@ -375,7 +496,7 @@
       </div>
       <div class="video-card">
         <div class="video-frame">
-          <iframe src="https://youtu.be/XrXpcLSi9Cg" title="The Coffee Bean — admin dashboard" allowfullscreen></iframe>
+          <iframe src="https://www.youtube.com/embed/XrXpcLSi9Cg" title="The Coffee Bean — admin dashboard" allowfullscreen></iframe>
         </div>
         <div class="video-caption">
           <h4>Admin dashboard</h4>
