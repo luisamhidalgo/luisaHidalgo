@@ -61,17 +61,21 @@
   
   /* HERO */
 .hero{
-    padding:90px 0 70px;
-    text-align:center;
-    border-bottom:1px solid var(--rule);
     position:relative;
     overflow:hidden;
-    background:linear-gradient(
-        to bottom,
-        #132437 0%,
-        #173552 60%,
-        #10253b 100%
-    );
+    text-align:center;
+    padding:90px 0 170px;
+
+    background:
+        linear-gradient(
+            rgba(13,27,41,.45),
+            rgba(13,27,41,.65)
+        ),
+        url("images/graduation.jpg");
+
+    background-size:cover;
+    background-position:center 35%;
+    background-repeat:no-repeat;
 }
 
 .hero .wrap{
