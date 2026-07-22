@@ -58,8 +58,7 @@
     padding:6px 2px;border-bottom:2px solid transparent;transition:all .2s ease;
   }
   nav a.link:hover{color:var(--accent);border-bottom-color:var(--accent);}
-
-  /* HERO */
+  
   /* HERO */
 .hero{
     padding:90px 0 70px;
@@ -125,39 +124,58 @@
     flex-wrap:wrap;
 }
 
-  /* OCEAN WAVES */
-.waves{
+  /* ===== OCEAN ===== */
+
+.ocean{
     position:absolute;
-    bottom:-120px;
+    bottom:0;
     left:0;
     width:100%;
-    height:260px;
     overflow:hidden;
-    pointer-events:none;
+    line-height:0;
     z-index:1;
 }
 
-.wave{
-    position:absolute;
-    left:-50%;
-    width:200%;
-    height:220px;
-    border-radius:43%;
+.waves{
+    position:relative;
+    width:100%;
+    height:170px;
 }
 
-.wave1{
-    background:rgba(79,168,232,.22);
-    animation:wave1 18s linear infinite;
+.parallax > use{
+    animation:moveWave 25s cubic-bezier(.55,.5,.45,.5) infinite;
 }
 
-.wave2{
-    background:rgba(79,168,232,.14);
-    animation:wave2 26s linear infinite;
+.parallax > use:nth-child(1){
+    animation-delay:-2s;
+    animation-duration:7s;
 }
 
-.wave3{
-    background:rgba(79,168,232,.08);
-    animation:wave3 34s linear infinite;
+.parallax > use:nth-child(2){
+    animation-delay:-3s;
+    animation-duration:10s;
+}
+
+.parallax > use:nth-child(3){
+    animation-delay:-4s;
+    animation-duration:13s;
+}
+
+.parallax > use:nth-child(4){
+    animation-delay:-5s;
+    animation-duration:20s;
+}
+
+@keyframes moveWave{
+
+    0%{
+        transform:translate3d(-90px,0,0);
+    }
+
+    100%{
+        transform:translate3d(85px,0,0);
+    }
+
 }
 
   /* ABOUT */
@@ -262,52 +280,14 @@
   }
 
 @keyframes floatName{
-
     0%,100%{
         transform:translateY(0);
     }
-
     50%{
         transform:translateY(-8px);
     }
-
 }
 
-@keyframes wave1{
-
-    0%{
-        transform:translateX(0) rotate(0deg);
-    }
-
-    100%{
-        transform:translateX(-25%) rotate(360deg);
-    }
-
-}
-
-@keyframes wave2{
-
-    0%{
-        transform:translateX(-25%) rotate(360deg);
-    }
-
-    100%{
-        transform:translateX(0) rotate(0deg);
-    }
-
-}
-
-@keyframes wave3{
-
-    0%{
-        transform:translateX(0) rotate(0deg);
-    }
-
-    100%{
-        transform:translateX(-15%) rotate(360deg);
-    }
-
-}
 </style>
 </head>
 <body>
@@ -328,10 +308,46 @@
 </nav>
 
 <header class="hero" id="top">
-  <div class="waves">
-    <div class="wave wave1"></div>
-    <div class="wave wave2"></div>
-    <div class="wave wave3"></div>
+ <div class="ocean">
+
+<svg
+class="waves"
+xmlns="http://www.w3.org/2000/svg"
+viewBox="0 24 150 28"
+preserveAspectRatio="none">
+
+<defs>
+
+<path
+id="gentle-wave"
+d="M-160 44
+c30 0
+58-18
+88-18
+s58 18
+88 18
+58-18
+88-18
+58 18
+88 18
+v44h-352z"/>
+
+</defs>
+
+<g class="parallax">
+
+<use href="#gentle-wave" x="48" y="0" fill="rgba(79,168,232,.35)"/>
+
+<use href="#gentle-wave" x="48" y="3" fill="rgba(79,168,232,.25)"/>
+
+<use href="#gentle-wave" x="48" y="5" fill="rgba(79,168,232,.15)"/>
+
+<use href="#gentle-wave" x="48" y="7" fill="#173552"/>
+
+</g>
+
+</svg>
+
 </div>
   <div class="wrap">
     <div class="eyebrow">Web development &amp; software support</div>
