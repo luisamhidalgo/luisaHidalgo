@@ -1,268 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luisa Hidalgo | Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luisa Hidalgo — Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Caveat:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#132437;
+    --bg-deep:#0D1B29;
+    --card:#1B3049;
+    --chalk:#EAF2FA;
+    --chalk-dim:#9FB7CE;
+    --accent:#4FA8E8;
+    --accent-dim:#2E77A8;
+    --paper:#EAF1F8;
+    --paper-text:#152C41;
+    --rule:rgba(234,242,250,0.14);
+    --shadow:rgba(0,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.02) 0, transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(255,255,255,0.02) 0, transparent 45%);
+    color:var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Playfair Display', serif;
+    font-weight:600;
+    letter-spacing:0.2px;
+  }
+  .signature-font{font-family:'Caveat', cursive; font-weight:700;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--accent);}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px;}
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg-deep);
+    border-bottom:1px solid var(--rule);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;flex-wrap:wrap;gap:10px;}
+  nav .brand{font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--chalk);text-decoration:none;}
+  nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;flex-wrap:wrap;}
+  nav a.link{
+    text-decoration:none;color:var(--chalk-dim);font-family:'IBM Plex Mono',monospace;
+    font-size:13px;text-transform:uppercase;letter-spacing:1px;
+    padding:6px 2px;border-bottom:2px solid transparent;transition:all .2s ease;
+  }
+  nav a.link:hover{color:var(--accent);border-bottom-color:var(--accent);}
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  /* HERO */
+  .hero{
+    padding:90px 0 70px;
+    text-align:center;
+    border-bottom:1px solid var(--rule);
+    position:relative;
+  }
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);
+  }
+  .hero h1{font-family:'Caveat',cursive;font-weight:700;font-size:clamp(52px,9vw,92px);margin:10px 0 6px;color:var(--chalk);}
+  .hero .role{font-size:clamp(18px,2.6vw,22px);color:var(--chalk-dim);font-family:'Work Sans',sans-serif;font-weight:500;}
+  .hero p.tagline{max-width:600px;margin:22px auto 0;color:var(--chalk-dim);font-size:16px;}
+  .divider-squiggle{width:220px;margin:26px auto 0;opacity:.8;}
+  .hero .cta-row{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:1px;
+    padding:12px 22px;border-radius:2px;text-decoration:none;border:2px solid var(--accent);
+    transition:all .2s ease;
+  }
+  .btn-solid{background:var(--accent);color:var(--bg-deep);font-weight:500;}
+  .btn-solid:hover{background:transparent;color:var(--accent);}
+  .btn-ghost{color:var(--accent);}
+  .btn-ghost:hover{background:var(--accent);color:var(--bg-deep);}
 
-        html {
-            scroll-behavior: smooth;
-        }
+  section{padding:80px 0;border-bottom:1px solid var(--rule);}
+  section:last-of-type{border-bottom:none;}
+  .section-head{margin-bottom:40px;}
+  .section-head .num{font-family:'IBM Plex Mono',monospace;color:var(--accent-dim);font-size:13px;letter-spacing:2px;}
+  .section-head h2{font-size:clamp(30px,4.4vw,42px);margin:4px 0 0;color:var(--chalk);}
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: #F4F1E6;
-            color: #2F3438;
-            line-height: 1.7;
-        }
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr;gap:28px;}
+  .about-grid p{color:var(--chalk-dim);font-size:16.5px;max-width:680px;}
+  .about-grid p strong{color:var(--chalk);font-weight:500;}
+  .lang-badges{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;}
+  .lang-badge{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:1px;text-transform:uppercase;
+    border:1px solid var(--rule);padding:8px 14px;border-radius:20px;color:var(--chalk-dim);
+  }
 
-        header {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
+  /* SKILLS */
+  .menu-board{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;}
+  .menu-col h3{color:var(--accent);font-size:20px;margin:0 0 14px;border-bottom:1px solid var(--rule);padding-bottom:8px;font-family:'Work Sans',sans-serif;font-weight:600;}
+  .menu-col ul{list-style:none;margin:0;padding:0;}
+  .menu-col li{
+    display:flex;justify-content:space-between;align-items:baseline;
+    padding:9px 0;font-size:15px;color:var(--chalk-dim);
+    border-bottom:1px dotted rgba(234,242,250,0.08);
+  }
+  .menu-col li span.dots{flex:1;border-bottom:1px dotted rgba(234,242,250,0.15);margin:0 8px;transform:translateY(-4px);}
+  .menu-col li .lvl{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent-dim);}
 
-            background:
-                linear-gradient(
-                    rgba(20,20,20,.40),
-                    rgba(20,20,20,.40)
-                ),
-                url('graduation.jpg');
+  /* EXPERIENCE - ticket-style cards */
+  .receipt{
+    background:var(--paper);
+    color:var(--paper-text);
+    padding:26px 28px 22px;
+    margin-bottom:26px;
+    position:relative;
+    box-shadow:0 10px 24px var(--shadow);
+    border-radius:4px;
+  }
+  .receipt-head{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
+    border-bottom:1px solid rgba(21,44,65,0.18);padding-bottom:10px;margin-bottom:12px;
+  }
+  .receipt-head h3{margin:0;font-size:21px;color:var(--paper-text);font-family:'Work Sans',sans-serif;font-weight:600;}
+  .receipt-head .place{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#3E5A73;}
+  .receipt-head .dates{font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3E5A73;white-space:nowrap;}
+  .receipt ul{margin:0;padding-left:18px;}
+  .receipt li{margin-bottom:6px;font-size:14.5px;}
 
-            background-size: cover;
-            background-position: center;
-            color: white;
-        }
+  /* FEATURED PROJECT */
+  .roast-card{
+    background:var(--card);border:1px solid var(--rule);border-radius:6px;
+    padding:34px;
+  }
+  .roast-card .stack{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 18px;}
+  .stack span{
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;color:var(--bg-deep);
+    background:var(--accent);padding:5px 10px;border-radius:20px;
+  }
+  .roast-card p{color:var(--chalk-dim);}
+  .roast-card ul{color:var(--chalk-dim);padding-left:20px;}
+  .roast-card ul li{margin-bottom:6px;}
+  .roast-links{margin-top:18px;display:flex;gap:14px;flex-wrap:wrap;}
 
-        .hero-content {
-            max-width: 700px;
-        }
+  /* VIDEO SECTION */
+  .video-note{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent-dim);
+    background:rgba(79,168,232,0.08);border:1px dashed var(--accent-dim);
+    padding:12px 16px;border-radius:4px;margin-bottom:26px;
+  }
+  .video-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:26px;}
+  .video-card{background:var(--bg-deep);border:1px solid var(--rule);border-radius:6px;overflow:hidden;}
+  .video-frame{position:relative;width:100%;padding-top:56.25%;background:#0A141F;}
+  .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+  .video-caption{padding:14px 18px;}
+  .video-caption h4{margin:0 0 4px;font-family:'Work Sans',sans-serif;font-size:16px;color:var(--chalk);font-weight:600;}
+  .video-caption p{margin:0;font-size:13.5px;color:var(--chalk-dim);}
 
-        header h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(3rem, 7vw, 5rem);
-            margin-bottom: 15px;
-        }
+  /* LEADERSHIP */
+  .community-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+  .community-card{
+    border:1px solid var(--rule);padding:22px 24px;border-radius:6px;background:var(--card);
+  }
+  .community-card .role{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;}
+  .community-card h3{margin:6px 0 4px;font-size:20px;font-family:'Work Sans',sans-serif;font-weight:600;}
+  .community-card p{color:var(--chalk-dim);font-size:14.5px;margin:0;}
 
-        header p {
-            font-size: clamp(1rem, 2vw, 1.3rem);
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
+  /* FOOTER / CONTACT */
+  footer{padding:70px 0 50px;text-align:center;}
+  footer h2{font-size:clamp(30px,5vw,46px);margin-bottom:10px;}
+  footer p{color:var(--chalk-dim);}
+  .contact-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:26px;}
+  .contact-links a{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:1px;
+    color:var(--chalk-dim);text-decoration:none;border-bottom:1px solid transparent;
+  }
+  .contact-links a:hover{color:var(--accent);border-bottom-color:var(--accent);}
+  .stamp{margin-top:50px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(234,242,250,0.35);}
 
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
+  /* reveal-on-scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-        section {
-            width: min(90%, 1000px);
-            margin: 90px auto;
-        }
-
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #4F6470;
-            margin-bottom: 25px;
-        }
-
-        .project {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
-            border-top: 5px solid #AFC5C0;
-        }
-
-        .project h3 {
-            margin-bottom: 15px;
-            color: #2F3438;
-        }
-
-        .project p {
-            margin-bottom: 15px;
-        }
-
-        .btn {
-            display: inline-block;
-            background: #4F6470;
-            color: white;
-            text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 10px;
-            transition: 0.3s ease;
-            margin-right: 10px;
-            margin-top: 10px;
-        }
-
-        .btn:hover {
-            background: #3D4E58;
-            transform: translateY(-2px);
-        }
-
-        .contact-box {
-            background: white;
-            padding: 30px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0,0,0,.08);
-        }
-
-        .contact-box p {
-            margin-bottom: 15px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #E9E6D9;
-            color: #6A7D77;
-            margin-top: 80px;
-        }
-        background:
-            linear-gradient(
-            rgba(20,20,20,.40),
-            rgba(20,20,20,.40)
-        ),
-        url('graduation.jpg');
-
-        @media (max-width: 768px) {
-
-            section {
-                margin: 60px auto;
-            }
-
-            h2 {
-                font-size: 2rem;
-            }
-
-            .project,
-            .contact-box {
-                padding: 20px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 250px;
-                text-align: center;
-                margin-right: 0;
-            }
-        }
-    </style>
+  @media (max-width:640px){
+    nav ul{gap:14px;}
+    .receipt-head{flex-direction:column;}
+  }
+</style>
 </head>
 <body>
 
-<header>
-    <div class="hero-content">
-        <h1>Luisa Hidalgo</h1>
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Luisa Hidalgo</a>
+    <ul>
+      <li><a class="link" href="#about">About</a></li>
+      <li><a class="link" href="#menu">Skills</a></li>
+      <li><a class="link" href="#brewlog">Experience</a></li>
+      <li><a class="link" href="#roast">Project</a></li>
+      <li><a class="link" href="#videos">Videos</a></li>
+      <li><a class="link" href="#community">Leadership</a></li>
+      <li><a class="link" href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-        <p>
-            Computer Science Graduate | Full-Stack Web Developer
-        </p>
-
-        <div class="hero-buttons">
-            <a href="#projects" class="btn">View Projects</a>
-            <a href="#contact" class="btn">Contact Me</a>
-        </div>
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Web development &amp; software support</div>
+    <h1>Luisa Hidalgo</h1>
+    <div class="role">Web Developer, bilingual in English and Spanish</div>
+    <svg class="divider-squiggle" viewBox="0 0 220 20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M2 12 Q 20 2, 38 12 T 74 12 T 110 12 T 146 12 T 182 12 T 218 12" fill="none" stroke="#4FA8E8" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <p class="tagline">Full-stack developer working across PHP, MySQL, JavaScript, and Python, with hands-on experience in data validation, customer support, and deploying production-ready applications. Currently seeking an entry-level web development, software, or IT role.</p>
+    <div class="cta-row">
+      <a class="btn btn-solid" href="#roast">View featured project</a>
+      <a class="btn btn-ghost" href="#contact">Contact me</a>
     </div>
+  </div>
 </header>
 
 <section id="about">
-    <h2>About Me</h2>
-
-    <p>
-        I am a Computer Science graduate with experience developing
-        full-stack web applications using PHP, MySQL, HTML, CSS,
-        and JavaScript. I enjoy building intuitive user interfaces,
-        designing efficient database systems, and creating practical
-        solutions that improve user experiences.
-    </p>
-
-    <p>
-        Through academic and personal projects, I have gained experience
-        in web development, database management, Linux server
-        administration, and software design. I am passionate about
-        learning new technologies and applying them to solve real-world
-        problems.
-    </p>
-</section>
-
-<section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-        <h3>The Coffee Bean Ordering System</h3>
-
-        <p>
-            Senior capstone project featuring a complete online coffee
-            ordering platform and administrative management system.
-            Customers can browse products, customize orders, and track
-            order status, while administrators can manage products,
-            orders, and customer activity through a secure dashboard.
-        </p>
-
-        <p>
-            <strong>Technologies:</strong>
-            HTML, CSS, JavaScript, PHP, MySQL
-        </p>
-
-        <a href="https://youtu.be/tgWJ9gKD4h4"
-           target="_blank"
-           class="btn">
-            Customer Ordering Demo
-        </a>
-
-        <a href="https://youtu.be/XrXpcLSi9Cg"
-           target="_blank"
-           class="btn">
-            Admin Dashboard Demo
-        </a>
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">01 — Profile</span><h2>About</h2></div>
+    <div class="about-grid reveal">
+      <p>I'm a <strong>bilingual web developer</strong> I completed a B.S. in Computer Science &amp; Biblical Studies (minor in Mathematics) at Emmaus University, graduated in May 2026. My focus is on the fundamentals that keep systems reliable — validating data at scale, writing maintainable code, and providing responsive, clear support to end users.</p>
+      <p>Beyond coursework, I've tutored fellow students in mathematics and computer science, managed AV systems for campus events, supported front-desk operations, and served as treasurer for student government, managing an $11,500 biweekly budget with accurate tracking.</p>
+      <div class="lang-badges">
+        <span class="lang-badge">English — fluent</span>
+        <span class="lang-badge">Spanish — fluent</span>
+        <span class="lang-badge">Charlotte, NC</span>
+      </div>
     </div>
+  </div>
 </section>
 
-<section id="contact">
-    <h2>Contact</h2>
-
-    <div class="contact-box">
-        <p>
-            <strong>Email:</strong>
-            luisa.m.hidalgo.a@gmail.com
-        </p>
-
-        <a href="https://github.com/luisamhidalgo"
-           target="_blank"
-           class="btn">
-            GitHub
-        </a>
-
-        <a href="www.linkedin.com/in/luisa-hidalgo-507677374"
-           target="_blank"
-           class="btn">
-            LinkedIn
-        </a>
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">02 — Skills</span><h2>Technical skills</h2></div>
+    <div class="menu-board reveal">
+      <div class="menu-col">
+        <h3>Languages</h3>
+        <ul>
+          <li>Python <span class="dots"></span> <span class="lvl">core</span></li>
+          <li>JavaScript <span class="dots"></span> <span class="lvl">core</span></li>
+          <li>PHP <span class="dots"></span> <span class="lvl">core</span></li>
+          <li>SQL <span class="dots"></span> <span class="lvl">core</span></li>
+          <li>C++ <span class="dots"></span> <span class="lvl">proficient</span></li>
+          <li>HTML / CSS <span class="dots"></span> <span class="lvl">core</span></li>
+        </ul>
+      </div>
+      <div class="menu-col">
+        <h3>Technologies</h3>
+        <ul>
+          <li>MySQL <span class="dots"></span> <span class="lvl">daily</span></li>
+          <li>Apache <span class="dots"></span> <span class="lvl">proficient</span></li>
+          <li>Linux <span class="dots"></span> <span class="lvl">daily</span></li>
+          <li>Git <span class="dots"></span> <span class="lvl">daily</span></li>
+          <li>VS Code <span class="dots"></span> <span class="lvl">daily</span></li>
+        </ul>
+      </div>
+      <div class="menu-col">
+        <h3>Additional experience</h3>
+        <ul>
+          <li>Customer-facing support <span class="dots"></span> <span class="lvl">2+ yrs</span></li>
+          <li>Data validation at scale <span class="dots"></span> <span class="lvl">1 yr</span></li>
+          <li>Team leadership <span class="dots"></span> <span class="lvl">2 yrs</span></li>
+        </ul>
+      </div>
     </div>
+  </div>
 </section>
 
-<footer>
-    © 2026 Luisa Hidalgo. All Rights Reserved.
+<section id="brewlog">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">03 — History</span><h2>Experience</h2></div>
+
+    <div class="receipt reveal">
+      <div class="receipt-head">
+        <div>
+          <h3>Software &amp; Data Intern</h3>
+          <div class="place">FrontYard Inc.</div>
+        </div>
+        <div class="dates">AUG 2025 – DEC 2025</div>
+      </div>
+      <ul>
+        <li>Processed and validated 50+ location datasets weekly using Python and AI-assisted workflows.</li>
+        <li>Maintained structured content datasets and CMS records with high accuracy.</li>
+        <li>Improved data consistency and platform reliability by validating structured location data at scale.</li>
+      </ul>
+    </div>
+
+    <div class="receipt reveal">
+      <div class="receipt-head">
+        <div>
+          <h3>Tutor — Math &amp; Computer Science</h3>
+          <div class="place">Emmaus University</div>
+        </div>
+        <div class="dates">AUG 2024 – MAY 2025</div>
+      </div>
+      <ul>
+        <li>Tutored 5 students weekly through one-on-one and group sessions, adapting explanations to individual learning styles.</li>
+      </ul>
+    </div>
+
+    <div class="receipt reveal">
+      <div class="receipt-head">
+        <div>
+          <h3>AV Technician</h3>
+          <div class="place">Emmaus University</div>
+        </div>
+        <div class="dates">AUG 2024 – MAY 2026</div>
+      </div>
+      <ul>
+        <li>Supported 2–4 campus events weekly; set up and troubleshot AV systems.</li>
+      </ul>
+    </div>
+
+    <div class="receipt reveal">
+      <div class="receipt-head">
+        <div>
+          <h3>Front Desk Assistant</h3>
+          <div class="place">Emmaus University</div>
+        </div>
+        <div class="dates">AUG 2023 – MAY 2026</div>
+      </div>
+      <ul>
+        <li>Assisted visitors and handled daily calls to support office operations.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="roast">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">04 — Project</span><h2>The Coffee Bean web app</h2></div>
+    <div class="roast-card reveal">
+      <div class="stack">
+        <span>PHP</span><span>MySQL</span><span>JavaScript</span><span>Linux</span><span>Apache</span>
+      </div>
+      <p>A full-stack coffee ordering web application built on a LAMP stack, covering the full order lifecycle from customer checkout to admin management. <span class="mono" style="font-size:13px;color:var(--chalk-dim);">Jan 2026 – May 2026</span></p>
+      <ul>
+        <li>Built a customer ordering flow with drink customization and dynamic order handling.</li>
+        <li>Designed an admin dashboard to manage incoming orders and update order statuses.</li>
+        <li>Implemented PHP session-based authentication and MySQL database integration.</li>
+        <li>Configured and deployed the application on a Linux virtual machine using Apache.</li>
+      </ul>
+      <div class="roast-links">
+        <a class="btn btn-ghost" href="#videos">View project walkthrough ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">05 — Demos</span><h2>Project walkthroughs</h2></div>
+    <div class="video-grid reveal">
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://youtu.be/tgWJ9gKD4h4" title="The Coffee Bean — customer ordering flow" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+          <h4>Customer ordering flow</h4>
+          <p>A walkthrough of drink customization and order handling in The Coffee Bean web app.</p>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <iframe src="https://youtu.be/XrXpcLSi9Cg" title="The Coffee Bean — admin dashboard" allowfullscreen></iframe>
+        </div>
+        <div class="video-caption">
+          <h4>Admin dashboard</h4>
+          <p>How orders are received and managed on the admin side, from status updates to session authentication.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap">
+    <div class="section-head reveal"><span class="num">06 — Involvement</span><h2>Leadership</h2></div>
+    <div class="community-grid reveal">
+      <div class="community-card">
+        <div class="role">Vice President · 2025–2026</div>
+        <h3>Student Government</h3>
+        <p>Led a 7-member team and organized 10–15 events per semester at Emmaus University.</p>
+      </div>
+      <div class="community-card">
+        <div class="role">Treasurer · 2024–2025</div>
+        <h3>Student Government</h3>
+        <p>Managed an $11,500 biweekly budget with accurate tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="eyebrow mono" style="color:var(--accent);font-size:12px;letter-spacing:2px;">07 — Contact</div>
+    <h2>Let's connect.</h2>
+    <p>Open to entry-level web development, software, and IT roles. Feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:luisa.m.hidalgo.a@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/luisa-hidalgo-507677374/">LinkedIn</a>
+      <a href="https://github.com/luisamhidalgo">GitHub</a>
+      <a href="tel:+19808993214">+1 (980) 899-3214</a>
+    </div>
+    <div class="stamp">Luisa Hidalgo — Charlotte, NC</div>
+  </div>
 </footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
